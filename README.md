@@ -47,8 +47,7 @@ filter_out.py runs with standard libraries.
 
 ## Clone the repository
 
-*`git clone https://github.com/codebutut/favicon_hasher.git`*
-*`cd favicon_hasher`*
+*`git clone https://github.com/codebutut/favicon_hasher.git && cd favicon_hasher`*
 
 # 🛠️ Usage & Examples
 
