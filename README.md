@@ -5,50 +5,49 @@ Favicon_Hasher is a lightweight Python toolkit designed for Red Teamers and Bug 
 It achieves this by automating the "Favicon Hash" OSINT technique and filtering large datasets from search engines like FOFA or Shodan to find exposed infrastructure.
 
 
-🚀 Features
+# 🚀 Features
 
 This repository contains two specialized scripts:
 
-1. favicon_hasher.py
+**favicon_hasher.py**
 
 Calculates the specific hash required to find a target's infrastructure on IoT search engines.
 
-*** Deep Dive: Shodan and FOFA do not hash raw image files. They base64-encode the favicon, insert newlines every 76 characters (MIME standard), and then calculate the MurmurHash3 (x86 32-bit) checksum. Standard hashing tools will fail to match Shodan's database. This script handles that specific formatting automatically.
+- Deep Dive: Shodan and FOFA do not hash raw image files. They base64-encode the favicon, insert newlines every 76 characters (MIME standard), and then calculate the MurmurHash3 (x86 32-bit) checksum. Standard hashing tools will fail to match Shodan's database. This script handles that specific formatting automatically.
 
-*** Smart Detection: Automatically extracts favicon URLs from HTML <link> tags if a direct image URL isn't provided.
+- Smart Detection: Automatically extracts favicon URLs from HTML <link> tags if a direct image URL isn't provided.
 
-2. filter_out.py (Analyzer)
+**filter_out.py (Analyzer)**
 
 Parses CSV exports from FOFA/Shodan to identify high-probability origin IPs.
 
-*** Noise Reduction: Automatically ignores IPs belonging to known CDNs (Cloudflare, Akamai, Fastly, etc.), saving you from manual checking.
+- Noise Reduction: Automatically ignores IPs belonging to known CDNs (Cloudflare, Akamai, Fastly, etc.), saving you from manual checking.
 
-*** Critical Asset Tagging: Scans titles and hostnames for keywords like admin, gray (staging), dev, backend, or manage, highlighting them as CRITICAL.
+- Critical Asset Tagging: Scans titles and hostnames for keywords like admin, gray (staging), dev, backend, or manage, highlighting them as CRITICAL.
 
-*** Verdict System: Classifies every IP as "Potential Origin", "Shared Hosting", or "Ignored".
+- Verdict System: Classifies every IP as "Potential Origin", "Shared Hosting", or "Ignored".
 
 
-📦 Installation
+# 📦 Installation
 
-Prerequisites
+**Prerequisites**
 
-*** Python 3.x
+1. Python 3.x
 
-*** pip (Python Package Installer)
+2. pip (Python Package Installer)
 
-Install Dependencies
+**Install Dependencies**
 
 Only favicon_hasher.py requires external libraries. filter_out.py runs with standard libraries.
 
 # Install requirements
 
-pip install mmh3 requests beautifulsoup4
+**pip install mmh3 requests beautifulsoup4**
 
 # Clone the repository
 
-git clone https://github.com/codebutut/favicon_hasher.git
-
-cd favicon_hasher
+'git clone https://github.com/codebutut/favicon_hasher.git
+cd favicon_hasher'
 
 🛠️ Usage & Examples
 
