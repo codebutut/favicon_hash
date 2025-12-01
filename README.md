@@ -102,9 +102,9 @@ Fofa:         icon_hash="708578229"
 
 - Copy the query string for your preferred search engine:
 
-- Shodan: Go to shodan.io and paste ==> http.favicon.hash:708578229.
+- Shodan: Go to shodan.io and paste ==> `http.favicon.hash:708578229`
 
-- FOFA: Go to fofa.info and paste ==> icon_hash="708578229".
+- FOFA: Go to fofa.info and paste ==> `icon_hash="708578229"`
 
 ## The Goal:
 
