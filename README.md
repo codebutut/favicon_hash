@@ -38,50 +38,53 @@ Parses CSV exports from FOFA/Shodan to identify high-probability origin IPs.
 
 **Install Dependencies**
 
-Only favicon_hasher.py requires external libraries. filter_out.py runs with standard libraries.
+Only favicon_hasher.py requires external libraries. 
+filter_out.py runs with standard libraries.
 
-# Install requirements
+## Install requirements
 
 **pip install mmh3 requests beautifulsoup4**
 
-# Clone the repository
+## Clone the repository
 
-'git clone https://github.com/codebutut/favicon_hasher.git'
-'cd favicon_hasher'
+*git clone https://github.com/codebutut/favicon_hasher.git*
+*cd favicon_hasher*
 
-🛠️ Usage & Examples
+# 🛠️ Usage & Examples
 
-Step 1: Get the Favicon Hash
+## Step 1: Get the Favicon Hash
 
-Mode A: Hashing from a URL (-u)
+## Mode A: Hashing from a URL (-u)
 
 This is the most common method. You can provide either the main website URL or the direct link to the favicon image.
 
-Command:
+**Command:**
 
-python3 favicon_hasher.py -u https://target-site.com
+*python3 favicon_hasher.py -u https://target-site.com*
 
-What happens:
+**What happens:**
 
-The script connects to https://example.com.
+*The script connects to https://example.com.*
 
-==> It parses the HTML to look for tags like <link rel="icon" href="...">.
+- It parses the HTML to look for tags like <link rel="icon" href="...">.
 
-==> If found, it downloads that specific image.
+- If found, it downloads that specific image.
 
-==> If not found, it attempts to download https://example.com/favicon.ico as a fallback.
+- If not found, it attempts to download https://example.com/favicon.ico as a fallback.
 
-==> It calculates and displays the hash.
+- It calculates and displays the hash.
 
-Mode B: Hashing a Local File (-f)
+## Mode B: Hashing a Local File (-f)
 
-Use this if you have manually downloaded the favicon or if the target website is not reachable from your current network (e.g., you are analyzing an internal file).
+*Use this if you have manually downloaded the favicon or if the target website is not reachable from your current network (e.g., you are analyzing an internal file).*
 
-python favicon_hasher.py -f my_downloaded_icon.ico
+**Command:**
 
-===> Interpreting the Output
+*python favicon_hasher.py -f my_downloaded_icon.ico*
 
-When the script runs successfully, you will see output like this:
+## Interpreting the Output
+
+*When the script runs successfully, you will see output like this:*
 
 ========================================
 [SUCCESS] Hash Calculated!
@@ -96,51 +99,51 @@ Zoomeye:      iconhash:"708578229"
 Fofa:         icon_hash="708578229"
 ========================================
 
-How to use the Hash
+## How to use the Hash
 
-*** Copy the query string for your preferred search engine:
+- Copy the query string for your preferred search engine:
 
-*** Shodan: Go to shodan.io and paste ==> http.favicon.hash:708578229.
+- Shodan: Go to shodan.io and paste ==> http.favicon.hash:708578229.
 
-*** FOFA: Go to fofa.info and paste ==> icon_hash="708578229".
+- FOFA: Go to fofa.info and paste ==> icon_hash="708578229".
 
-===> The Goal:
+## The Goal:
 
 If the search results return IP addresses that are not Cloudflare/CDN IPs (e.g., they belong to AWS, DigitalOcean, or a residential ISP), you have likely found the Origin Server.
 
-===> Troubleshooting
+## Troubleshooting
 
-SSL Errors: The script is configured to ignore SSL verification warnings (verify=False) to ensure it works even on misconfigured targets.
+*SSL Errors: The script is configured to ignore SSL verification warnings (verify=False) to ensure it works even on misconfigured targets.*
 
-"No icon tag found": This means the script couldn't find a declared favicon in the HTML and the fallback /favicon.ico did not exist (404). In this case, try to manually find the image URL in your browser (Right-click image -> Copy Image Link) and use the -u flag with the direct link.
+*"No icon tag found": This means the script couldn't find a declared favicon in the HTML and the fallback /favicon.ico did not exist (404). In this case, try to manually find the image URL in your browser (Right-click image -> Copy Image Link) and use the -u flag with the direct link.*
 
-Hash Mismatch: If you calculate a hash but Shodan shows 0 results, check if the website serves different icons to different User-Agents. The script uses a standard Chrome User-Agent.
+*Hash Mismatch: If you calculate a hash but Shodan shows 0 results, check if the website serves different icons to different User-Agents. The script uses a standard Chrome User-Agent.*
 
-===> Why MurmurHash3?
+## Why MurmurHash3?
 
-Shodan uses a specific hashing algorithm:
+*Shodan uses a specific hashing algorithm:*
 
-*** Take the image bytes.
+- Take the image bytes.
 
-*** Encode them to Base64.
+- Encode them to Base64.
 
-*** Insert a newline (\n) every 76 characters.
+- Insert a newline (\n) every 76 characters.
 
-*** Calculate the MurmurHash3 (x86 32-bit) checksum.
+- Calculate the MurmurHash3 (x86 32-bit) checksum.
 
-Standard tools often miss step #3 (the newlines), resulting in an incorrect hash. This script handles that formatting automatically to ensure compatibility with Shodan.
+**Standard tools often miss step #3 (the newlines), resulting in an incorrect hash. This script handles that formatting automatically to ensure compatibility with Shodan.**
 
-Step 3: Analyze Results
+ ## Analyze Results
 
 Use filter_out.py to process the CSV file and find the real IP.
 
-Command:
+**Command:**
 
-# Syntax: python filter_out.py <path_to_csv>
+*Syntax: python filter_out.py <path_to_csv>*
 
-python3 filter_out.py fofa_results_export.csv
+**python3 filter_out.py fofa_results_export.csv**
 
-Output:
+*Output:*
 
 [*] Analyzing fofa_results_export.csv...
 IP Address           | Org                       | Title/Domain                             | Verdict
@@ -152,7 +155,7 @@ IP Address           | Org                       | Title/Domain                 
 [*] Analysis Complete. Found 3 potential origin candidates.
 
 
-📝 Script Deep Dive
+# 📝 Script Deep Dive
 
 This script uses requests to fetch data and BeautifulSoup to parse HTML. It is robust against:
 
@@ -162,7 +165,7 @@ This script uses requests to fetch data and BeautifulSoup to parse HTML. It is r
 
     *** Missing Headers: Mimics a standard browser User-Agent.
 
-filter_out.py
+**filter_out.py**
 
 This script uses Python's built-in csv module.
 
@@ -179,6 +182,6 @@ This script uses Python's built-in csv module.
         *** Yellow: Shared Hosting (GoDaddy, Namecheap) - often false positives or marketing sites.
 
 
-⚠️ Disclaimer
+# ⚠️ Disclaimer
 
-This tool is for educational purposes and authorized security testing only. Using these tools to scan targets without permission may violate local laws. The authors are not responsible for misuse.
+**This tool is for educational purposes and authorized security testing only. Using these tools to scan targets without permission may violate local laws. The authors are not responsible for misuse.**
