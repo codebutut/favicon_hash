@@ -1,4 +1,4 @@
-🕵️‍♂️ Favicon_Hasher
+# 🕵️‍♂️ Favicon_Hasher
 
 Favicon_Hasher is a lightweight Python toolkit designed for Red Teamers and Bug Bounty hunters. Its primary goal is to discover the Real Origin IP of websites protected by WAFs (Web Application Firewalls) like Cloudflare, Akamai, or AWS CloudFront.
 
