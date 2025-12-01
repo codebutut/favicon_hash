@@ -148,9 +148,9 @@ Use filter_out.py to process the CSV file and find the real IP.
 [*] Analyzing fofa_results_export.csv...
 IP Address           | Org                       | Title/Domain                             | Verdict
 ----------------------------------------------------------------------------------------------------
-169.136.118.29       | NETSTAR SG PTE. LTD.      | 信令接入配置平台 (Signaling Access...)     | CRITICAL ASSET
-164.90.98.96         | NETSTAR SG PTE. LTD.      | CDN管理系统 (CDN Management System)       | CRITICAL ASSET
-164.90.114.30        | NETSTAR SG PTE. LTD.      | activity.bigo.tv                         | POTENTIAL ORIGIN
+169.136.xxx.xx       | NETSTAR SG PTE. LTD.      | XXXXXXXXXXXXX (Signaling Access...)   | CRITICAL ASSET
+164.90.xx.xx         | NETSTAR SG PTE. LTD.      | CDN管理系统 (CDN Management System)     | CRITICAL ASSET
+164.90.1xx.x0        | NETSTAR SG PTE. LTD.      | website.com                            | POTENTIAL ORIGIN
 ----------------------------------------------------------------------------------------------------
 [*] Analysis Complete. Found 3 potential origin candidates.
 
