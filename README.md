@@ -1,8 +1,8 @@
 # 🕵️‍♂️ Favicon_Hasher
 
-Favicon_Hasher is a lightweight Python toolkit designed for Red Teamers and Bug Bounty hunters. Its primary goal is to discover the Real Origin IP of websites protected by WAFs (Web Application Firewalls) like Cloudflare, Akamai, or AWS CloudFront.
+*** Favicon_Hasher is a lightweight Python toolkit designed for Red Teamers and Bug Bounty hunters. Its primary goal is to discover the Real Origin IP of websites protected by WAFs (Web Application Firewalls) like Cloudflare, Akamai, or AWS CloudFront.
 
-It achieves this by automating the "Favicon Hash" OSINT technique and filtering large datasets from search engines like FOFA or Shodan to find exposed infrastructure.
+*** It achieves this by automating the "Favicon Hash" OSINT technique and filtering large datasets from search engines like FOFA or Shodan to find exposed infrastructure.
 
 
 # 🚀 Features
