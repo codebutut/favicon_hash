@@ -32,9 +32,9 @@ Parses CSV exports from FOFA/Shodan to identify high-probability origin IPs.
 
 **Prerequisites**
 
-1. Python 3.x
+1. `Python 3.x`
 
-2. pip (Python Package Installer)
+2. `pip` (Python Package Installer)
 
 **Install Dependencies**
 
@@ -43,12 +43,12 @@ filter_out.py runs with standard libraries.
 
 ## Install requirements
 
-**pip install mmh3 requests beautifulsoup4**
+**`pip install mmh3 requests beautifulsoup4`**
 
 ## Clone the repository
 
-*git clone https://github.com/codebutut/favicon_hasher.git*
-*cd favicon_hasher*
+*`git clone https://github.com/codebutut/favicon_hasher.git`*
+*`cd favicon_hasher`*
 
 # 🛠️ Usage & Examples
 
@@ -60,7 +60,7 @@ This is the most common method. You can provide either the main website URL or t
 
 **Command:**
 
-*python3 favicon_hasher.py -u https://target-site.com*
+*`python3 favicon_hasher.py -u https://target-site.com`*
 
 **What happens:**
 
@@ -80,7 +80,7 @@ This is the most common method. You can provide either the main website URL or t
 
 **Command:**
 
-*python favicon_hasher.py -f my_downloaded_icon.ico*
+*`python favicon_hasher.py -f my_downloaded_icon.ico`*
 
 ## Interpreting the Output
 
@@ -139,9 +139,9 @@ Use filter_out.py to process the CSV file and find the real IP.
 
 **Command:**
 
-*Syntax: python filter_out.py <path_to_csv>*
+*`Syntax: python filter_out.py <path_to_csv>`*
 
-**python3 filter_out.py fofa_results_export.csv**
+**`python3 filter_out.py fofa_results_export.csv`**
 
 *Output:*
 
