@@ -46,8 +46,8 @@ Only favicon_hasher.py requires external libraries. filter_out.py runs with stan
 
 # Clone the repository
 
-'git clone https://github.com/codebutut/favicon_hasher.git
-cd favicon_hasher'
+'git clone https://github.com/codebutut/favicon_hasher.git'
+'cd favicon_hasher'
 
 🛠️ Usage & Examples
 
